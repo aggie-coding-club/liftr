@@ -3,17 +3,35 @@
     
     <!-- ScrollView will let us scroll later -->
     <ScrollView>
+       
+        <StackLayout>
+            <!-- Need to use Stack Layout for first BoxView to push down second one -->
 
-        <StackLayout VerticalOptions="Center">
+            <BoxView HeightRequest="75" WidthRequest="350" />
 
-            <!-- This is just a "fake" box to push the other one down more -->
-            <BoxView HeightRequest="75"/> 
+            <!-- Relative Layout lets us overlay elements, couldn't do this in Stack Layout -->
+            <RelativeLayout>
 
-            <!-- Main box -->
-            <BoxView Color="Gray" HorizontalOptions="Center" WidthRequest="350" HeightRequest="500"/>
+                <BoxView Color="Black" WidthRequest="300" HeightRequest="400" 
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                        Property=Height,Factor=.15,Constant=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression
+                        Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression
+                        Type=RelativeToParent,Property=Height,Factor=.8,Constant=0}" />
+                <Label TextColor="White" Text="Hello World"  
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+                        Property=Height,Factor=.15,Constant=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression
+                        Type=RelativeToView,Property=Width,Factor=1,Constant=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression
+                        Type=RelativeToView,Property=Height,Factor=.8,Constant=0}" />
+                    <!-- Currently looking at ways to manipulate label position -->
+                
+            </RelativeLayout>
             
         </StackLayout>
-
+        
     </ScrollView>
     
 </ContentPage>
