@@ -8,7 +8,7 @@ namespace liftrprojectfile
         {
             InitializeComponent();
 
-            MainPage = new liftr_project_filePage();
+            MainPage = new NavigationPage(new liftr_project_filePage());
         }
 
         protected override void OnStart()
