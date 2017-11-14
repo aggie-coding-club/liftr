@@ -4,34 +4,59 @@
     <!-- ScrollView will let us scroll later -->
     <ScrollView>
        
-        <StackLayout>
             <!-- Need to use Stack Layout for first BoxView to push down second one -->
-
-            <BoxView HeightRequest="75" WidthRequest="350" />
 
             <!-- Relative Layout lets us overlay elements, couldn't do this in Stack Layout -->
             <RelativeLayout>
-
-                <BoxView Color="Black" WidthRequest="300" HeightRequest="400" 
+                <Label Text="Liftr" FontAttributes="Bold" Font="San Francisco" FontSize="50"
+                    RelativeLayout.XConstraint="{ConstraintExpression
+                        Type=RelativeToParent,
+                        Property=Width,
+                        Factor=0.5,
+                        Constant=-50}"
+                    RelativeLayout.YConstraint="{ConstraintExpression
+                        Type=RelativeToParent,
+                        Property=Height,
+                        Factor=0.5,
+                        Constant=-300}"/>
+            
+                <BoxView Color="Gray" WidthRequest="300" HeightRequest="500" x:Name="card" 
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                        Property=Width,Factor=1,Constant=-340}"
                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
-                        Property=Height,Factor=.15,Constant=0}"
-                    RelativeLayout.WidthConstraint="{ConstraintExpression
-                        Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
-                    RelativeLayout.HeightConstraint="{ConstraintExpression
-                        Type=RelativeToParent,Property=Height,Factor=.8,Constant=0}" />
-                <Label TextColor="White" Text="Hello World"  
-                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
-                        Property=Height,Factor=.15,Constant=0}"
-                    RelativeLayout.WidthConstraint="{ConstraintExpression
-                        Type=RelativeToView,Property=Width,Factor=1,Constant=0}"
-                    RelativeLayout.HeightConstraint="{ConstraintExpression
-                        Type=RelativeToView,Property=Height,Factor=.8,Constant=0}" />
+                        Property=Height,Factor=1,Constant=-550}"/>
+            
+                <Label x:Name="name" TextColor="Black" Text="Arnold, 26" FontAttributes="Bold" Font="San Francisco" FontSize="30"
+                    RelativeLayout.YConstraint="{ConstraintExpression 
+                        Type=RelativeToView,
+                        ElementName=card,
+                        Property=Height,
+                        Factor=1,
+                        Constant=-200}"
+                    RelativeLayout.XConstraint="{ConstraintExpression 
+                        Type=RelativeToView,
+                        ElementName=card,
+                        Property=Width,
+                        Factor=1,
+                        Constant=-260}"/>
+            
+                <Label Text="College Station, TX" TextColor="Black" Font="San Francisco" FontSize="12" 
+                    RelativeLayout.XConstraint="{ConstraintExpression
+                        Type=RelativeToView,
+                        ElementName=name,
+                        Property=Width,
+                        Factor=1,
+                        Constant=-93}"
+                    RelativeLayout.YConstraint="{ConstraintExpression
+                        Type=RelativeToView,
+                        ElementName=name,
+                        Property=Height,
+                        Factor=1,
+                        Constant=300}"/>
                     <!-- Currently looking at ways to manipulate label position -->
                 
             </RelativeLayout>
-            
-        </StackLayout>
-        
+
     </ScrollView>
     
 </ContentPage>
