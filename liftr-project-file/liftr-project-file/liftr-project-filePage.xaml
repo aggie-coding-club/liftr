@@ -3,16 +3,60 @@
     
     <!-- ScrollView will let us scroll later -->
     <ScrollView>
+       
+            <!-- Need to use Stack Layout for first BoxView to push down second one -->
 
-        <StackLayout VerticalOptions="Center">
-
-            <!-- This is just a "fake" box to push the other one down more -->
-            <BoxView HeightRequest="75"/> 
-
-            <!-- Main box -->
-            <BoxView Color="Gray" HorizontalOptions="Center" WidthRequest="350" HeightRequest="500"/>
+            <!-- Relative Layout lets us overlay elements, couldn't do this in Stack Layout -->
+            <RelativeLayout>
+                <Label Text="Liftr" FontAttributes="Bold" Font="San Francisco" FontSize="50"
+                    RelativeLayout.XConstraint="{ConstraintExpression
+                        Type=RelativeToParent,
+                        Property=Width,
+                        Factor=0.5,
+                        Constant=-50}"
+                    RelativeLayout.YConstraint="{ConstraintExpression
+                        Type=RelativeToParent,
+                        Property=Height,
+                        Factor=0.5,
+                        Constant=-300}"/>
             
-        </StackLayout>
+                <BoxView Color="Gray" WidthRequest="300" HeightRequest="500" x:Name="card" 
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                        Property=Width,Factor=1,Constant=-340}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                        Property=Height,Factor=1,Constant=-550}"/>
+            
+                <Label x:Name="name" TextColor="Black" Text="Arnold, 26" FontAttributes="Bold" Font="San Francisco" FontSize="30"
+                    RelativeLayout.YConstraint="{ConstraintExpression 
+                        Type=RelativeToView,
+                        ElementName=card,
+                        Property=Height,
+                        Factor=1,
+                        Constant=-200}"
+                    RelativeLayout.XConstraint="{ConstraintExpression 
+                        Type=RelativeToView,
+                        ElementName=card,
+                        Property=Width,
+                        Factor=1,
+                        Constant=-255}"/>
+            
+                <Label Text="College Station, TX" TextColor="Black" Font="San Francisco" FontSize="12" 
+                    RelativeLayout.XConstraint="{ConstraintExpression
+                        Type=RelativeToView,
+                        ElementName=name,
+                        Property=Width,
+                        Factor=1,
+                        Constant=-88}"
+                    RelativeLayout.YConstraint="{ConstraintExpression
+                        Type=RelativeToView,
+                        ElementName=name,
+                        Property=Height,
+                        Factor=1,
+                        Constant=300}"/>
+            
+                    <!-- Currently looking at ways to manipulate label position -->
+                
+            </RelativeLayout>
 
     </ScrollView>
     
